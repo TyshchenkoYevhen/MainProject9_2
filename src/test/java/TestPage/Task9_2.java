@@ -37,6 +37,7 @@ public class Task9_2 {
         testPage.increaseQuantity();
         testPage.deleteGood();
         testPage.cartIsEmpty();
+
     }
 
     @After
