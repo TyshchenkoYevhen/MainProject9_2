@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
-public class TestPage {
+class TestPage {
 
     private static final String MAIN_PAGE_URL ="http://automationpractice.com";
     private WebDriver driver;
@@ -30,6 +30,7 @@ public class TestPage {
     private By totalTax = By.xpath("//td[@id='total_tax']");
     private By price = By.xpath("//span[@id='total_price']");
     private By delete = By.xpath("//a[@id='2_7_0_0']/i");
+    private By cartEmpty = By.xpath("//p[contains(.,'Your shopping cart is empty.')]");
 
 
     public TestPage (WebDriver driver) {
@@ -69,6 +70,7 @@ public class TestPage {
         Assert.assertEquals("$27.00", this.driver.findElement(totalProduct).getText());
         this.driver.findElement(addButton).click();
         Thread.sleep(1500);
+
 //        WebDriver driver = new ChromeDriver();
 //        driver.get("webdriver.chrome.driver");
 //        WebElement dynamicElement = (new WebDriverWait(driver, 20))
@@ -86,7 +88,8 @@ public class TestPage {
         return this;
     }
 
-    public boolean cartIsEmpty(){
-        return this.driver.findElement(price).isDisplayed();
+    public TestPage cartIsEmpty(){
+        this.driver.findElement(cartEmpty).isDisplayed();
+        return this;
     }
 }
