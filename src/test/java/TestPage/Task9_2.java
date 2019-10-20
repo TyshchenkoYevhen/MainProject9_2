@@ -1,7 +1,6 @@
 package TestPage;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -27,7 +26,7 @@ public class Task9_2 {
     }
 
     @Test
-    public void addToCart () throws InterruptedException {
+    public void addToCart (){
         testPage.openMainPage();
         testPage.enterBlouse();
         testPage.execSearch();
