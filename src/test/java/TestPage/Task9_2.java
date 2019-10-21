@@ -35,6 +35,11 @@ public class Task9_2 {
         testPage.addToCart();
         testPage.procesedToCheckout();
         testPage.increaseQuantity();
+        testPage.checkTotalProduct();
+        testPage.checkTotalShipping();
+        testPage.checkTotalGoods();
+        testPage.checkTotalTax();
+        testPage.checkPrice();
         testPage.deleteGood();
         testPage.cartIsEmpty();
     }
