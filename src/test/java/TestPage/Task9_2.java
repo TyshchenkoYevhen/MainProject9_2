@@ -13,20 +13,21 @@ public class Task9_2 {
 
     private WebDriver driver;
     private TestPage testPage;
+    private static final String PATH_TO_CHROMEDRIVER = System.getProperty("user.dir") + "\\src\\main\\resources\\chromedriver.exe";
 
     @Before
-    public void setting () {
-        System.setProperty("webdriver.chrome.driver", "d:\\install\\chromedriver_win32\\chromedriver.exe");
+    public void setting() {
+        System.setProperty("webdriver.chrome.driver", PATH_TO_CHROMEDRIVER);
         // win mac linux
         driver = new ChromeDriver();
         driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-       testPage = new TestPage(this.driver);
+        testPage = new TestPage(this.driver);
     }
 
     @Test
-    public void addToCart (){
+    public void addToCart() {
         testPage.openMainPage();
         testPage.enterBlouse();
         testPage.execSearch();
@@ -36,11 +37,10 @@ public class Task9_2 {
         testPage.increaseQuantity();
         testPage.deleteGood();
         testPage.cartIsEmpty();
-
     }
 
     @After
-    public void cleanup(){
+    public void cleanup() {
         driver.manage().deleteAllCookies();
         driver.close();
     }
