@@ -1,6 +1,7 @@
 package TestPage;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
@@ -27,7 +28,7 @@ public class Task9_2 {
     }
 
     @Test
-    public void addToCart() {
+    public void Test1 () {
         testPage.openMainPage();
         testPage.enterBlouse();
         testPage.execSearch();
@@ -35,11 +36,44 @@ public class Task9_2 {
         testPage.addToCart();
         testPage.procesedToCheckout();
         testPage.increaseQuantity();
-        testPage.checkTotalProduct();
-        testPage.checkTotalShipping();
-        testPage.checkTotalGoods();
-        testPage.checkTotalTax();
-        testPage.checkPrice();
+    }
+
+    @Test
+    public void checkTotalProd () {
+        String expRes = "$54.00"; //54
+        String actRes = testPage.checkTotalProduct();
+        Assert.assertEquals(expRes,actRes);
+    }
+
+    @Test
+    public void checkShipping() {
+        String expRes = "$2.00";
+        String actRes = testPage.checkTotalShipping();
+        Assert.assertEquals(expRes,actRes);
+    }
+
+    @Test
+    public void checkTotalGoods() {
+        String expRes = "$56.00";
+        String actRes = testPage.checkTotalGoods();
+        Assert.assertEquals(expRes,actRes);
+    }
+
+    @Test
+    public void checkTotalTax() {
+        String expRes = "$0.00";
+        String actRes = testPage.checkTotalTax();
+        Assert.assertEquals(expRes,actRes);
+    }
+    @Test
+    public void checkPrice() {
+        String expRes = "$56.00";
+        String actRes = testPage.checkPrice();
+        Assert.assertEquals(expRes,actRes);
+    }
+
+    @Test
+   public void  Test2 () {
         testPage.deleteGood();
         testPage.cartIsEmpty();
     }

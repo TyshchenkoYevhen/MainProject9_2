@@ -1,6 +1,6 @@
 package TestPage;
 
-import org.junit.Assert;
+//import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,6 +35,10 @@ class TestPage {
         this.driver = driver;
     }
 
+    public TestPage() {
+
+    }
+
     public TestPage openMainPage(){
         this.driver.navigate().to(MAIN_PAGE_URL);
         return this;
@@ -65,39 +69,34 @@ class TestPage {
     }
 
     public TestPage increaseQuantity(){
-        Assert.assertEquals("$27.00", this.driver.findElement(total).getText());
+        this.driver.findElement(total).getText();
         this.driver.findElement(addButton).click();
         new WebDriverWait(driver, 20).until(ExpectedConditions.textToBePresentInElementLocated(xpath("//td[@id='total_product']"), "$54.00"));
         return this;
-//        Assert.assertEquals("$54.00", this.driver.findElement(totalProduct).getText());
-//        Assert.assertEquals("$2.00", this.driver.findElement(totalShipping).getText());
-//        Assert.assertEquals("$56.00", this.driver.findElement(totalGoods).getText());
-//        Assert.assertEquals("$0.00", this.driver.findElement(totalTax).getText());
-//        Assert.assertEquals("$56.00", this.driver.findElement(price).getText());
     }
 
-    public TestPage checkTotalProduct() {
-        Assert.assertEquals("$54.00", this.driver.findElement(totalProduct).getText());
-        return this;
+    public String checkTotalProduct() {
+      return  this.driver.findElement(totalProduct).getText();
+
     }
 
-    public TestPage checkTotalShipping() {
-        Assert.assertEquals("$2.00", this.driver.findElement(totalShipping).getText());
-        return this;
+    public String checkTotalShipping() {
+       return this.driver.findElement (totalShipping).getText();
+
     }
 
-    public TestPage checkTotalGoods() {
-        Assert.assertEquals("$56.00", this.driver.findElement(totalGoods).getText());
-        return this;
+    public String checkTotalGoods() {
+      return this.driver.findElement (totalGoods).getText();
+
     }
 
-    public TestPage checkTotalTax() {
-        Assert.assertEquals("$0.00", this.driver.findElement(totalTax).getText());
-        return this;
+    public String checkTotalTax() {
+        return this.driver.findElement(totalTax).getText();
     }
-    public TestPage checkPrice() {
-        Assert.assertEquals("$56.00", this.driver.findElement(price).getText());
-        return this;
+
+    public String checkPrice() {
+        return this.driver.findElement(price).getText();
+
     }
 
     public TestPage deleteGood (){
@@ -109,5 +108,4 @@ class TestPage {
         this.driver.findElement(cartEmpty).isDisplayed();
         return this;
     }
-
 }
